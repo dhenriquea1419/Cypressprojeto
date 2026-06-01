@@ -1,33 +1,32 @@
 # language: pt
+Funcionalidade: Validação do portal gov.br
 
-Funcionalidade: gov.br - Navegação e Serviços
+  # ==========================================
+  # PARTE 3: PAULO GEORGE (Integridade e Performance)
+  # ==========================================
 
-  Cenário: Navegar para página de Serviços
+  Cenário: Validar que a logomarca redireciona para a Home
     Dado que estou na página inicial do gov.br
-    Quando clico no link "Serviços"
-    Então eu devo ver o breadcrumb com "Página Inicial" e "Serviços"
-    E a página deve conter o título "Serviços"
+    Quando clico na logomarca do "gov.br"
+    Então a página deve ser recarregada na Home
 
-  Cenário: Acessar página de Acesso à Informação
+  Cenário: Validar tempo de resposta da busca
+    Dado que o sistema de busca do gov.br está disponível
+    Quando eu busco pelo termo "transparência"
+    Então o tempo de resposta deve ser inferior a 5 segundos
+
+  Cenário: Verificar link de Órgãos do Governo no cabeçalho
     Dado que estou na página inicial do gov.br
-    Quando acesso a página de Acesso à Informação
-    Então a página deve carregar corretamente
-    E a página deve conter o título "Acesso à Informação"
+    Então deve existir um link para "Órgãos do Governo" no cabeçalho
 
-  Cenário: Buscar serviço no gov.br
+  Esquema do Cenário: Paulo George - Validar busca por termos institucionais
     Dado que o sistema de busca do gov.br está disponível
-    Quando eu busco pelo termo "imposto de renda"
-    Então eu devo receber resultados da busca
-    E os resultados devem conter o termo "imposto de renda"
-
-  Esquema do Cenário: Buscar serviços por diferentes termos
-    Dado que o sistema de busca do gov.br está disponível
-    Quando eu busco pelo termo "<termo_busca>"
+    Quando eu busco pelo termo "<termo_george>"
     Então eu devo receber resultados da busca
     E a página deve retornar código 200
 
     Exemplos:
-      | termo_busca |
-      | INSS        |
-      | MEI         |
-      | ENEM        |
+      | termo_george |
+      | Legislação   |
+      | Presidência  |
+      | Ouvidoria    |
