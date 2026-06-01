@@ -1,5 +1,5 @@
 # language: pt
-
+#Navegação Básica (Daniel)
 Funcionalidade: gov.br - Navegação e Serviços
 
   Cenário: Navegar para página de Serviços
@@ -31,3 +31,58 @@ Funcionalidade: gov.br - Navegação e Serviços
       | INSS        |
       | MEI         |
       | ENEM        |
+
+#Acessibilidade e Robustez (Gustavo)
+Cenário: Verificar links de acessibilidade no rodapé
+    Dado que estou na página inicial do gov.br
+    Então deve existir um link para "Acessibilidade" no rodapé
+    E ao clicar, a página de acessibilidade deve carregar corretamente
+
+  Cenário: Validar integridade dos dados da API de busca
+    Dado que o sistema de busca do gov.br está disponível
+    Quando eu busco pelo termo "Certificado"
+    Então cada resultado deve conter um título e um link válido
+
+  Cenário: Validar resposta negativa na busca
+    Dado que o sistema de busca do gov.br está disponível
+    Quando eu busco por um termo inexistente "termoinvalido12345"
+    Então o sistema não deve retornar resultados de serviços
+
+  Esquema do Cenário: Gustavo - Validar busca por termos técnicos
+    Dado que o sistema de busca do gov.br está disponível
+    Quando eu busco pelo termo "<termo_gustavo>"
+    Então eu devo receber resultados da busca
+    E os resultados devem ser coerentes com o termo pesquisado
+
+    Exemplos:
+      | termo_gustavo |
+      | Protocolo     |
+      | Certidão      |
+      | Autenticação  |
+
+#Performance e Elementos Globais (Paulo George)
+Cenário: Validar que a logomarca redireciona para a Home
+    Dado que estou na página inicial do gov.br
+    Quando clico na logomarca do "gov.br"
+    Então a página deve ser recarregada na Home
+
+  Cenário: Validar tempo de resposta da busca
+    Dado que o sistema de busca do gov.br está disponível
+    Quando eu busco pelo termo "transparência"
+    Então o tempo de resposta deve ser inferior a 5 segundos
+
+  Cenário: Verificar link de Órgãos do Governo no cabeçalho
+    Dado que estou na página inicial do gov.br
+    Então deve existir um link para "Órgãos do Governo" no cabeçalho
+
+  Esquema do Cenário: Paulo George - Validar busca por termos institucionais
+    Dado que o sistema de busca do gov.br está disponível
+    Quando eu busco pelo termo "<termo_george>"
+    Então eu devo receber resultados da busca
+    E a página deve retornar código 200
+
+    Exemplos:
+      | termo_george |
+      | Legislação   |
+      | Presidência  |
+      | Ouvidoria    |
