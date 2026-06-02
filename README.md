@@ -6,6 +6,11 @@
   <img src="https://img.shields.io/badge/Node.js-18%2B-success?style=for-the-badge&logo=node.js" />
 </p>
 
+# Link do vídeo sobre o projeto 
+
+https://drive.google.com/file/d/1OqDt7FiyeJHtjWMH6DoA9VezJhStxAnV/view?usp=drive_link
+
+
 ## 📖 Sobre o Projeto
 
 O **CypressProject** é um projeto de automação de testes End-to-End (E2E) desenvolvido para validar funcionalidades do portal **gov.br**.
